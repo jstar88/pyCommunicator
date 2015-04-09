@@ -1,7 +1,7 @@
 # pyCommunicator
 Library to make asynchronous-statefull-bidirectional communication with external software.  
 
-### Communicator.py 
+### Communicator.py
 Provide the communication layer between python and any other software.  
 Public methods are  
 * self.**addRequest**(command, message, callback)
@@ -16,13 +16,60 @@ where
 for example, to call another python file "test.py" and output its result:
 
 ```python
-   from pyCommunicator.Communicator import Communicator
+    #main.py
+    from pyCommunicator.Communicator import Communicator
    
-   def callback(v):
-     print v
+    def callback(v):
+       print v   # print 'a simple message string'
    
-   communicator = Communicator()
-   communicator.addRequest(['python', 'test.py'], 'a simple message string', callback)
+    communicator = Communicator()
+    communicator.addRequest(['python', 'test.py'], 'a simple message string', callback)
 ```
 
+```python
+    #test.py
+    import sys
+    print sys.stdin.readline()
+```
+
+
 ### PyPyCommunicator.py
+Provide the communication layer between python and another python file.   
+It work like Communicator.py with the exception that message will be dump by marshal module and the callback return will be loaded by marshal module too.  
+
+Public methods are  
+* self.**addRequest**(command, message, callback)
+* self.**addFreeRequest**(command, message, callback)
+
+where   
+
+1. **command** = array rappresenting the cmd command
+2. **message** = any python base object that will be sent as marshal string to target file
+3. **callback** = callable function called when returns are ready(stdout of target file)
+
+for example, to call another python file "test.py" and output its result:
+
+```python
+    #main.py
+    from pyCommunicator.PyPyCommunicator import PyPyCommunicator
+   
+    def callback(v):
+       print v   # print [1,2,3]
+   
+    communicator = PyPyCommunicator()
+    communicator.addRequest(['python', 'test.py'], [1,2,3], callback)
+```
+
+```python
+    #test.py
+    import marshal
+    import sys
+
+    def reply(data):
+       print marshal.dumps(data)
+    
+    def retriveData():
+       return marshal.loads(sys.stdin.readline())
+
+    reply(retriveData())
+```
