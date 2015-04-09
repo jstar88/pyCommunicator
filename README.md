@@ -82,4 +82,4 @@ Both functions call a callback when the result is ready, so they will not block 
 
 
 *addRequest* is ideal for critical communications, like with a database, where the order between requests must be respected.   
-*addFreeRequest* in the other hand, will ignore any other request and so it's best suited for hight performance
+*addFreeRequest* in the other hand, will ignore any other request and so it's best suited for hight performance usages
