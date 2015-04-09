@@ -73,3 +73,13 @@ for example, to call another python file "test.py" and output its result:
 
     reply(retriveData())
 ```
+
+### addRequest vs addFreeRequest
+Both functions call a callback when the result is ready, so they will not block your main code.   
+
+*addFreeRequest*: this methond create a new thread where the communication run
+*addRequest*: here, instead, the request is enqueued so it will be processed only when all the older requests are ended  
+
+
+*addRequest* is ideal for critical communications, like with a database, where the order between requests must be respected.   
+*addFreeRequest* in the other hand, will ignore any other request and so it's best suited for hight performance
