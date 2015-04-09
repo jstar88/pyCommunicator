@@ -1,4 +1,4 @@
-from PyPyCommunicator import PyPyCommunicator
+from pyCommunicator.PyPyCommunicator import PyPyCommunicator
 
 
 def callback(obj):

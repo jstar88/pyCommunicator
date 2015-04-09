@@ -70,36 +70,3 @@ class Communicator(object):
                         )
         t = threading.Thread(target=partial(self.__elaborate, callback, proc, message))
         t.start()
-        
-        
-
-#---------------- Example --------------------
-def example():
-    def callback(v):
-        print '1)' + v
-    
-    def callback2(v):
-        print '2)' + v
-    
-    def callback3(v):
-        print '3)' + v
-
-    communicator = Communicator()
-    communicator.addRequest(['python', 'b.py'], 'hello world', callback)
-    communicator.addRequest(['python', 'c.py'], 'hello world2', callback2)
-    communicator.addFreeRequest(['python', 'c.py'], 'hello world3', callback3)
-    print 'code is going to be free'
-
-
-#example()
-"""
-code is going to be free
-3)c.py
-hello world3
-
-1)b.py
-hello world
-
-2)c.py
-hello world2
-"""
