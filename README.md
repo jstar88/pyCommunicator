@@ -77,7 +77,7 @@ for example, to call another python file "test.py" and output its result:
 ### addRequest vs addFreeRequest
 Both functions call a callback when the result is ready, so they will not block your main code.   
 
-*addFreeRequest*: this methond create a new thread where the communication run
+*addFreeRequest*: this method create a new thread where the communication run
 *addRequest*: here, instead, the request is enqueued so it will be processed only when all the older requests are ended  
 
 
