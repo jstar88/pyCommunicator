@@ -6,7 +6,9 @@ Provide the communication layer between python and any other software.
 Public methods are  
 * self.addRequest(command, message, callback)
 * self.addFreeRequest(command, message, callback)
-where  
+
+where   
+
 1. command = array rappresenting the cmd command
 2. message = string that will be sent to stdin of target file
 3. callback = callable function called when returns are ready(stdout of target file)
