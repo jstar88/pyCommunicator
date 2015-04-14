@@ -7,6 +7,8 @@ This is the most complex example, you can find easier examples in this project
 
 ```python
      
+    #main.py
+     
     from pyCommunicator.FrontEndMarshalCallback import FrontEndMarshalCallback
 
     #function called when output of the first command is ready
@@ -22,7 +24,7 @@ This is the most complex example, you can find easier examples in this project
         print "3 " + str(output)
         
     #the cmd command
-    cmd  = ['python','ext_service_marshal_callback.py']
+    cmd  = ['python','ext.py']
 
     #create a new communication channel between this and an external python file
     # multiple requests from c channel will be enqueued and processed inline
@@ -57,4 +59,32 @@ This is the most complex example, you can find easier examples in this project
 
     '''
 ```
+
+```python
+
+    #ext.py
+    
+    '''
+    External echo service with different process time based on command type
+    '''
+    
+    from pyCommunicator.BackEndMarshalCallback import BackEndMarshalCallback
+    import time
+
+    s = BackEndMarshalCallback()
+    def x(data):
+        if data[2] == '1':
+            time.sleep(3)
+        elif data[2] == '2':
+            time.sleep(0)
+        elif data[2] == '3':
+            time.sleep(1)
+        s.write(data)
+
+    s.onRead += x
+    s.run()
+
+
+```
+
 
