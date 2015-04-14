@@ -17,6 +17,11 @@ class FrontEndMarshalCallback(FrontEnd):
 
         def size(self):
             return len(self.items)
+        
+        def isEmpty(self):
+            if self.items:
+                return False
+            return True
     
     def __init__(self, service):
         super(FrontEndMarshalCallback, self).__init__(service)
@@ -29,9 +34,10 @@ class FrontEndMarshalCallback(FrontEnd):
         
     def on_read(self, data):
         data = self.__unwrapData(data)
-        callback = self.callbacks.dequeue()
-        if callback is not None:
-            callback(data)
+        if not self.callbacks.isEmpty():
+            callback = self.callbacks.dequeue()
+            if callback is not None:
+                callback(data)
         return FrontEnd.on_read(self, data)
     
     def __wrapData(self, data):
