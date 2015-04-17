@@ -1,7 +1,7 @@
-from pyCommunicator.BackEndMarshalCallback import BackEndMarshalCallback
+from pyCommunicator.BackEndJsonCallback import BackEndJsonCallback
 import time
 
-s = BackEndMarshalCallback()
+s = BackEndJsonCallback()
 def x(data):
     if data[2] == '1':
         time.sleep(3)

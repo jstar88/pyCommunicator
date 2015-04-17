@@ -1,6 +1,6 @@
-from pyCommunicator.BackEndMarshalCallback import BackEndMarshalCallback
+from pyCommunicator.BackEndJsonCallback import BackEndJsonCallback
 
-b = BackEndMarshalCallback()
+b = BackEndJsonCallback()
 b.run()
 
 

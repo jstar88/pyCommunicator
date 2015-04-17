@@ -1,8 +1,8 @@
-from pyCommunicator.FrontEndMarshalCallback import FrontEndMarshalCallback
+from pyCommunicator.FrontEndJsonCallback import FrontEndJsonCallback
 
 def guiCallback(data):
     print data
 
-f = FrontEndMarshalCallback(['python','gui.py'])
+f = FrontEndJsonCallback(['python','gui.py'])
 f.onRead += guiCallback
 f.run()

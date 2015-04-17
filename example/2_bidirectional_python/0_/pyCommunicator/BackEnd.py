@@ -1,9 +1,9 @@
-import Event
 import threading
 import sys
+from libs.Event import Event as EVNT
 
 class BackEnd(object):
-    onRead = Event.Event()
+    onRead = EVNT()
     
     def __init__(self):
         pass

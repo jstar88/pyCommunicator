@@ -1,4 +1,4 @@
-from pyCommunicator.FrontEndMarshalCallback import FrontEndMarshalCallback
+from pyCommunicator.FrontEndJsonCallback import FrontEndJsonCallback
 
 def onRead1(output):
     print "1 " +  str(output)
@@ -9,9 +9,9 @@ def onRead2(output):
 def onRead3(output):
     print "3 " + str(output)
 
-c = FrontEndMarshalCallback(['python','ext_service_marshal_callback.py'])
+c = FrontEndJsonCallback(['python','ext_service_marshal_callback.py'])
 c.run()
-d = FrontEndMarshalCallback(['python','ext_service_marshal_callback.py'])
+d = FrontEndJsonCallback(['python','ext_service_marshal_callback.py'])
 d.run()
 
 

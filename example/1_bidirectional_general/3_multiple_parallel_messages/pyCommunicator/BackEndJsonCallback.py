@@ -1,7 +1,7 @@
 from BackEnd import BackEnd
-import marshal
+import json
 
-class BackEndMarshalCallback(BackEnd):
+class BackEndJsonCallback(BackEnd):
     
     def on_read(self, data):
         data = self.__unwrapData(data)
@@ -13,7 +13,7 @@ class BackEndMarshalCallback(BackEnd):
         
         
     def __wrapData(self, data):
-        return marshal.dumps(data)
+        return json.dumps(data)
     
     def __unwrapData(self, data):
-        return marshal.loads(data)
+        return json.loads(data)

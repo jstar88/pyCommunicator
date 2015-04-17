@@ -1,11 +1,11 @@
-from nbstreamreader import NonBlockingStreamReader as NBSR
+from libs.nbstreamreader import NonBlockingStreamReader as NBSR
 import subprocess
 import threading
-import Event
+from libs.Event  import Event as EVNT
 
 
 class FrontEnd(object):
-    onRead = Event.Event()
+    onRead = EVNT()
     
     def __init__(self, service):
         # startupinfo = subprocess.STARTUPINFO()

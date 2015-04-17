@@ -1,7 +1,7 @@
 from FrontEnd import FrontEnd
-import marshal
+import json
 
-class FrontEndMarshalCallback(FrontEnd):
+class FrontEndJsonCallback(FrontEnd):
     class Queue:
         def __init__(self):
             self.items = []
@@ -24,8 +24,8 @@ class FrontEndMarshalCallback(FrontEnd):
             return True
     
     def __init__(self, service):
-        super(FrontEndMarshalCallback, self).__init__(service)
-        self.callbacks = FrontEndMarshalCallback.Queue()
+        super(FrontEndJsonCallback, self).__init__(service)
+        self.callbacks = FrontEndJsonCallback.Queue()
     
     def write(self, data, callback=None):
         self.callbacks.enqueue(callback)
@@ -41,7 +41,7 @@ class FrontEndMarshalCallback(FrontEnd):
         return FrontEnd.on_read(self, data)
     
     def __wrapData(self, data):
-        return marshal.dumps(data)
+        return json.dumps(data)
     
     def __unwrapData(self, data):
-        return marshal.loads(data)
+        return json.loads(data)
