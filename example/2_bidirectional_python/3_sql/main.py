@@ -5,7 +5,8 @@ from DBStub import DBStub
 def showResults(data):
     print data
 
-f = FrontEndJsonCallback(['python','service/generic_instance_manager.py'])
+f = FrontEndJsonCallback(['service/dist/generic_instance_manager.exe'])
+f.onRead += showResults
 f.run()
 
 db = DBStub(f,'my.db')

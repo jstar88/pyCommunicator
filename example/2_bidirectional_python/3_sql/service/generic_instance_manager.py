@@ -1,7 +1,5 @@
 from pyCommunicator.BackEndJsonCallback import BackEndJsonCallback
 
-bjc = BackEndJsonCallback()
-claz_objs = {}
 
 def myHandler(data):
     global claz_objs
@@ -19,5 +17,7 @@ def myHandler(data):
     bjc.write(methodToCall(*data['args']))
     
 
+bjc = BackEndJsonCallback()
+claz_objs = {}
 bjc.onRead += myHandler
 bjc.run()

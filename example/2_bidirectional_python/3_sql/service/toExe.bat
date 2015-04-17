@@ -1,0 +1,1 @@
+python\Python-Portable.exe setup.py py2exe
