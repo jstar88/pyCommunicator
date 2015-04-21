@@ -3,7 +3,7 @@
 Let's suppose that our main environment is built without splite3 support:  
 this example show you how solve the problem using an external python environment with sqlite3 enabled.   
 As always, we call *service* the external tool and the relative folder contains all what it needs.  
-Just to make more realistic the example, the service is built in a .exe with py_installer module but it could be also a .py file running in a portable python version.  
+Just to make the example more realistic, the service is built in a .exe with py_installer module but it could be also a .py file running in a portable python version.  
   
 
 #### Archetype
