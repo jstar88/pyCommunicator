@@ -9,7 +9,7 @@ def x(data):
         time.sleep(0)
     elif data[2] == '3':
         time.sleep(1)
-    s.write(data)
+    s.reply(data)
 
 s.onRead += x
 s.run()

@@ -15,7 +15,7 @@ def myHandler(data):
         claz_objs[idc] = claz_obj
     
     methodToCall = getattr(claz_obj,data['method'])  
-    bjc.write(methodToCall(*data['args']))
+    bjc.reply(methodToCall(*data['args']))
     
 
 bjc = BackEndJsonCallback()

@@ -33,8 +33,9 @@ class FrontEndJsonCallback(FrontEnd):
         return FrontEnd.write(self, data)
         
     def on_read(self, data):
+        hasCallback, data = self.__splitData(data)
         data = self.__unwrapData(data)
-        if not self.callbacks.isEmpty():
+        if hasCallback == 'True' and not self.callbacks.isEmpty():
             callback = self.callbacks.dequeue()
             if callback is not None:
                 callback(data)
@@ -45,3 +46,6 @@ class FrontEndJsonCallback(FrontEnd):
     
     def __unwrapData(self, data):
         return json.loads(data)
+    
+    def __splitData(self, data):
+        return tuple(data.split(':'))
