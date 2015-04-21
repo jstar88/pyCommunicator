@@ -18,8 +18,9 @@ Just to make more realistic the example, the service is built in a .exe with py_
 3. **generic_instance_manager.py**: this class take the dictionary as above,create the relative object and call the method.  
 It's important to say that it use the *multitone* pattern, so it check for instanced class with the right arguments and return it. If not exist then it will be created and saved.  
 In this way you can use multiple instances of same class at same time, each one with different construct args.  
-In our case, we can use multiple *Database* instances but they must have different name, of course.
+In our case, we can use multiple *Database* instances but they must have different name, of course.  
 This manager is pretty cool since it can be used for different purposes and services.  
+
 4.**Database.py**: Finally, it is the pure database implementation, more generic as possible for large usage.  
 5. **imports.py**: It's used to "show" to pyInstaller the hidden imports.  
 6.**compile.bat**: contains the cmd command to compile generic_instance_manager.py to .exe using pyInstaller module.  
