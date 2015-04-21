@@ -9,7 +9,7 @@ This is the most complex example, you can find easier examples in this project
      
     #main.py
      
-    from pyCommunicator.FrontEndMarshalCallback import FrontEndMarshalCallback
+    from pyCommunicator.FrontEndJsonCallback import FrontEndJsonCallback
 
     #function called when output of the first command is ready
     def onRead1(output):
@@ -28,12 +28,12 @@ This is the most complex example, you can find easier examples in this project
 
     #create a new communication channel between this and an external python file
     # multiple requests from c channel will be enqueued and processed inline
-    c = FrontEndMarshalCallback(cmd)
+    c = FrontEndJsonCallback(cmd)
     c.run()
     
     #create a new communication channel between this and an external python file
     # multiple requests from d channel will be enqueued and processed inline
-    d = FrontEndMarshalCallback(cmd)
+    d = FrontEndJsonCallback(cmd)
     d.run()
 
     #messages are any type of python's primitive data.
@@ -68,10 +68,10 @@ This is the most complex example, you can find easier examples in this project
     External echo service with different process time based on command type
     '''
     
-    from pyCommunicator.BackEndMarshalCallback import BackEndMarshalCallback
+    from pyCommunicator.BackEndJsonCallback import BackEndJsonCallback
     import time
 
-    s = BackEndMarshalCallback()
+    s = BackEndJsonCallback()
     def x(data):
         if data[2] == '1':
             time.sleep(3)
