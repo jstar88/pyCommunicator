@@ -9,9 +9,9 @@ def onRead2(output):
 def onRead3(output):
     print "3 " + str(output)
 
-c = FrontEndJsonCallback(['python','ext_service_marshal_callback.py'])
+c = FrontEndJsonCallback(['python','ext_service.py'])
 c.run()
-d = FrontEndJsonCallback(['python','ext_service_marshal_callback.py'])
+d = FrontEndJsonCallback(['python','ext_service.py'])
 d.run()
 
 
