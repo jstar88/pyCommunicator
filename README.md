@@ -79,7 +79,7 @@ This is the most complex example, you can find easier examples in this project
             time.sleep(0)
         elif data[2] == '3':
             time.sleep(1)
-        s.write(data)
+        s.reply(data)
 
     s.onRead += x
     s.run()
