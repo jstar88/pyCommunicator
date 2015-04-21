@@ -1,34 +1,41 @@
 import sqlite3
+
 class Database(object):
     
     def __init__(self, dbname):
-        self.dbcon = sqlite3.connect(dbname)
+        self.dbname = dbname
         
     def execute(self,query,fields = None):
-        c = self.dbcon.cursor()
+        dbcon = sqlite3.connect(self.dbname)
+        c = dbcon.cursor()
         if fields is None:
             c.execute(query)
         else:
             c.execute(query,fields)
-        self.dbcon.commit()
+        dbcon.commit()
+        dbcon.close()
+        return True
         
     def executeFetchOne(self,query,fields = None):
-        c = self.dbcon.cursor()
+        dbcon = sqlite3.connect(self.dbname)
+        c = dbcon.cursor()
         if fields is None:
             c.execute(query)
         else:
             c.execute(query,fields)
-        self.dbcon.commit()
-        return c.fetchone()
+        dbcon.commit()
+        tmp =  c.fetchone()
+        dbcon.close()
+        return tmp
         
     def executeFetchAll(self,query,fields = None):
-        c = self.dbcon.cursor()
+        dbcon = sqlite3.connect(self.dbname)
+        c = dbcon.cursor()
         if fields is None:
             c.execute(query)
         else:
             c.execute(query,fields)
-        self.dbcon.commit()
-        return c.fetchall()
-    
-    def __del__(self):
-        self.dbcon.close()
+        dbcon.commit()
+        tmp = c.fetchall()
+        dbcon.close()
+        return tmp

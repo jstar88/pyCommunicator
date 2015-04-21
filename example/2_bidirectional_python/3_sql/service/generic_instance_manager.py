@@ -1,8 +1,9 @@
 from pyCommunicator.BackEndJsonCallback import BackEndJsonCallback
+import imports
 
 
 def myHandler(data):
-    global claz_objs
+    global claz_objs,bjc
     idc = data['module']+data['class']+str(data['instance_args'])
     if idc in claz_objs:
         claz_obj = claz_objs[idc]
