@@ -6,7 +6,7 @@ As always, we call *service* the external tool and the relative folder contains 
 Just to make more realistic the example, the service is built in a .exe with py_installer module but it could be also a .py file running in a portable python version.  
   
 
-### Archetype
+#### Archetype
 
 1. **main.py** :  
 it's the root thread and it do some DB operations printing the results.  
@@ -38,5 +38,5 @@ contains the cmd command to compile generic_instance_manager.py to .exe using py
 7. **other folders**:  
 the pyCommunicator is included both in main thread and in the service, since it's supposed to be external.  
 
-8. *dist*:  
+8. **dist**:  
 contains the compiled generic_instance_manager.exe
