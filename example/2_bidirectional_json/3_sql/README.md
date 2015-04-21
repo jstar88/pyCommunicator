@@ -13,11 +13,11 @@ it's the root thread and it do some DB operations printing the results.
 
 2. **DBStub.py** :  
 it contains a list of useful methods for our purpose and emulate the database sending a dictionary of useful informations to the *generic_instance_manager.py* through the *FrontEndJsonCallback* object. The dictionary keys are:
-   * module : the module containing the target class , in our case *Database*
-   * class : the target class, in our case *Database*
-   * instance_args : a list of constructor's arguments, in our case *[dbname]*
-   * method: the method to call,  in our case are the methods of class *Database.py*
-   * args: a list of method's arguments, in our case most of time is *[query,(values)]*
+   * `module` : the module containing the target class , in our case *Database*
+   * `class` : the target class, in our case *Database*
+   * `instance_args` : a list of constructor's arguments, in our case *[dbname]*
+   * `method`: the method to call,  in our case are the methods of class *Database.py*
+   * `args`: a list of method's arguments, in our case most of time is *[query,(values)]*
 
 3. **generic_instance_manager.py**:  
 this class take the dictionary as above,create the relative object and call the method.  
