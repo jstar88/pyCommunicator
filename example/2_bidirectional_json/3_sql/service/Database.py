@@ -7,6 +7,7 @@ class Database(object):
         
     def execute(self,query,fields = None):
         dbcon = sqlite3.connect(self.dbname)
+        dbcon.row_factory = dict_factory
         c = dbcon.cursor()
         if fields is None:
             c.execute(query)
@@ -18,6 +19,7 @@ class Database(object):
         
     def executeFetchOne(self,query,fields = None):
         dbcon = sqlite3.connect(self.dbname)
+        dbcon.row_factory = dict_factory
         c = dbcon.cursor()
         if fields is None:
             c.execute(query)
@@ -30,6 +32,7 @@ class Database(object):
         
     def executeFetchAll(self,query,fields = None):
         dbcon = sqlite3.connect(self.dbname)
+        dbcon.row_factory = dict_factory
         c = dbcon.cursor()
         if fields is None:
             c.execute(query)
@@ -39,3 +42,9 @@ class Database(object):
         tmp = c.fetchall()
         dbcon.close()
         return tmp
+    
+def dict_factory(cursor, row):
+    d = {}
+    for idx,col in enumerate(cursor.description):
+        d[col[0]] = row[idx]
+    return d

@@ -3,7 +3,7 @@ class DBStub:
         self.constructor = {'module': 'Database', 'class':'Database', 'instance_args':[dbname]}
         self.f = f
         self.tableName = tableName
-        self.__createTable('objects', ["x real", "y real", "z real", "name text", "path text"],callback)
+        self.__createTable(tableName, ["x real", "y real", "z real", "name text", "path text"],callback)
     
     def __send(self, request, callback=None):
         self.constructor.update(request)
